@@ -1,8 +1,10 @@
 my ip = 10.8.90.150
-ip machine = 10.10.23.90
+ip machine = 10.10.30.220
 
 
-admin 
+
+
+
 
 
 
@@ -84,5 +86,44 @@ stegoveritas <imagem> #dividir imagem em várias
 binwalk <arquivo> #ver possiveis extrações de um arquivo
 
 zsteg <arquivo> #arquivos com formatos que o steghide não consegue extrair
+
+openssl rsa -in <Encrypted key filename>  -out < desired output file name> #desencriptar private key de ssl
+
+md5sum <arquivo>.gpg #verificar arquivos com md5 incluido
+
+gpg -d <arquivo>.gpg #decryptar o md5
+
+openssl rsautl -decrypt -inkey <private-key> -in <encrypted-file> -out <decrypted-file> #para desencriptar rsautl com uma private key que possuimos
+
+https://example.com/?include_file=file1.php #para servidores com falha no php, exibem qualquer arquivo se não tiver filtro(LFI)
+
+tres arquivos python no git um para contar quantos arquivos possuem determinada palavra, um para extrair varios zips de uma vez dentro de uma pastas, um para buscar o nome de um arquivo com uma determinada string #EDITAR diretorios e modificações
+
+hydra -l <username> -P <path-to-short-rockyou> <remote-ip> http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect" -V #exemplo de bruteforce com hydra em formulario web
+
+hydra -l <username> -P <full path to pass> <ip> -t 4 ssh #hydra em ssh
+
+hydra -l user -P passlist.txt ftp://192.168.0.1 #hydra em ftp
+
+php -S <tun IP>:8000 #iniciar servidor php
+
+cat /etc/crontab #verificar crontab mal-configurado
+
+<numero de linhas a copiar(nada se for uma apenas)>yy #copiar arquivo dentro do vim
+
+y$ #copiar ate o final de uma linha no vim
+
+p #colar algo apos ou antes do cursor(vim)
+
+<numero de linhas a cortar(nada se for uma apenas)>d #cortar algo(vim)
+
+/<padrao> #pesquisar padrao com vimgrep para pesquisar para tras basta usar ? no lugar de barra para buscar algo na mesma direção deve se usar n para buscar na outra direção usar N
+
+stegcracker <file> [<wordlist>] #quebrar senha para steghide
+
+gcc -o <output-file> <source-file> #compilar um arquivo C
+
+scp file.txt remote_username@10.10.0.2:/remote/directory #copiar arquivos no linux
+
 
 
