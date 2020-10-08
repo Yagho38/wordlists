@@ -1,12 +1,13 @@
-my ip = 10.6.8.59
-ip machine = 10.10.106.243
+my ip = 10.2.29.121
+ip machine = 10.10.51.168
 
 
 10113 10415 21033 
+fergus
 
-
-
-
+seina@fowsniff
+scoobydoo2
+S1ck3nBluff+secureshell
 
 
 python3 -c "import pty; pty.spawn('/bin/bash')" #usar em shell
