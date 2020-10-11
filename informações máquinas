@@ -148,7 +148,7 @@ sudo crontab -e #caso tenhamos acesso ao crontab como root
 
 :!/bin/bash   #finalizar o vi assim para poder pega root, (util tambem depois de utilizar sudo crontab -e)
 
-
+ps -aef  #listar todos of processos no linux
 
 
 
