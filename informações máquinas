@@ -158,6 +158,13 @@ diff arquivo1 arquivo2 #encontrar diferença entre arquivos
 
 ls | grep release #procurar por release dentro da pasta, util para descobrir versoes do os etc.
 
+grep -o "4bceb[a-z0-9]\{27\}" 2>/dev/null #pesquisar string com 32 caracteres, sabendo o inicio e limitando o resto dos caracteres a numero especifico, nesse caso subtraindo os 5 caracteres iniciais de 32 o resultado é 27 caracteres restantes
+
+uname -r #verificar versão do kernel
+
+cat /home/garry/flag29 | sed "s/\s//g" | tr -d "\n" | rev | cut -d "," -f1 | rev #Remova todos os espaços no arquivo. Remova todos os novos espaços de linha. Divida por vírgula e obtenha o último elemento da divisão.
+
+/etc/group  #é onde se localizam os grupos do sistema linux
 
 
 
