@@ -150,7 +150,13 @@ sudo crontab -e #caso tenhamos acesso ao crontab como root
 
 ps -aef  #listar todos of processos no linux
 
+tar -xzvf flag8.tar.gz #descompactar tar.gz
 
+gzip <arquivo> #ou gunzip para compactar .gz ou para descompactar em .gz
+
+diff arquivo1 arquivo2 #encontrar diferença entre arquivos
+
+ls | grep release #procurar por release dentro da pasta, util para descobrir versoes do os etc.
 
 
 
