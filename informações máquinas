@@ -172,6 +172,6 @@ setspn -T medin -Q */*   #detectar spn em usuários, serviço de mapeamento entr
 
 export PATH=/tmp:$PATH #trocar o path de um executavel caso seja possivel para elevar privs
 
-enum4linux -A  # enumerar serviços smb rodando em um possivel alvo
+enum4linux -A <ip> # enumerar serviços smb rodando em um possivel alvo
 
 
