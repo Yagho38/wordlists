@@ -3,7 +3,7 @@
 import requests
 import sys
 
-arquivo = open('spam.txt')
+arquivo = open('dicionarioquequiser.txt')
 
 url = sys.argv[1]
 
