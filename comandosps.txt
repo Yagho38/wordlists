@@ -1,0 +1,59 @@
+Set-Location   #equivalente cd
+
+Set-Location -Path c:\users\administrator\desktop  #exemplo de sintaxe do Set-Location
+
+Get-ChildItem   #equivalente ao ls ou ao dir
+
+-Path    #Especifica um caminho para um ou mais locais. Caracteres curinga são aceitos
+
+-File / -Directory #Para obter uma lista de arquivos, use o parâmetro File. Para obter uma lista de diretórios, use o parâmetro Directory. Você pode usar o parâmetro Recurse com os parâmetros File e / ou Directory.
+
+-Filter #Especifica um filtro para qualificar o parâmetro Path.
+
+-Recurse #Obtém os itens nos locais especificados e em todos os itens filhos dos locais.
+
+-Hidden #Para obter apenas itens ocultos, use o parâmetro Hidden.
+
+-ErrorAction SilentlyContinue #Especifica a ação a ser executada se o comando encontrar um erro.
+
+Get-ChildItem -File -Hidden -ErrorAction SilentlyContinue     #visualizar todos os arquivos ocultos de um diretório
+
+Get-ChildItem -Recurse -Directory -Hidden -ErrorAction SilentlyContinue -Path 'C:\Windows' -Filter '*3*'   #exemplo de Get-ChildItem de alto nivel
+
+Get-Content  #equivalente ao type ou ao cat
+
+Get-Content -Path file.txt  #exemplo de sintaxe do Get-Content
+
+Measure-Object  #numero de palavras em um arquivo pode ser usado com o argumento -Word por exemplo
+
+Get-Content -Path file.txt | Measure-Object -Word   #exemplo de combinação dos dois
+
+(Get-Content -Path file.txt)[index]   #ver a posição exata de um arquivo, substituir o [index] por exemplo por [0] ou [1], etc.
+
+Select-String  #equivalente ao find
+
+Select-String -Path 'c:\users\administrator\desktop' -Pattern '*.pdf' #exemplo de sintaxe do Select-String
+
+Get-Content 2.txt | Select-String -Pattern 'redryder.*'  #combinação dos dois semelhante ao grep
+
+Get-Help #ver ajuda de um comando
+
+Get-Help Select-String #exemplo de sintaxe do Get-Help
+
+Get-FileHash -Algorithm MD5 file.txt   #pegar o hash de um arquivo
+
+Get-Item -Path file.exe -Stream *  #visualizar o ADS(Alternate Data Streams) de um arquivo
+
+#Windows NTFS(New Technology File System)
+
+wmic process call create $(Resolve-Path file.exe:streamname)  #executar o ADS oculto em um executavel
+
+
+
+
+
+
+
+
+
+

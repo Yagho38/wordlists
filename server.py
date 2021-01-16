@@ -4,7 +4,7 @@ import socket
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ip = "0.0.0.0"
-port = 1344
+port = 4444
 
 try:
 	server.bind((ip, port))

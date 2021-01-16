@@ -1,7 +1,7 @@
 import requests
 import sys
 
-arquivo = open(sys.argv[2])
+arquivo = open('/usr/share/wordlists/dirb/common.txt')
 
 url = sys.argv[1]
 
